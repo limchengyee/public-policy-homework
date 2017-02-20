@@ -1,0 +1,9 @@
+select
+  department, count(first) employees
+from
+  chicago
+group by
+  department
+order by
+  employees DESC
+;

@@ -1,0 +1,11 @@
+select
+  state_code,
+  avg(educational_attainment >= 39) high_school
+from
+  cps
+where
+  educational_attainment > 0
+group by
+  state_code
+order by
+  high_school;

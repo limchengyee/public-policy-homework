@@ -1,0 +1,21 @@
+select sex, avg(time) from (
+  select
+    roster.case_id, edited_age,
+    AVG(edited_sex) sex,
+    sum((activity_code = 120307) * (duration)) as time
+  from
+    roster
+  inner join activities on
+    activities.case_id = roster.case_id
+  where
+    roster.line_no = 1 AND
+    edited_age < 50 and
+    edited_age >= 20
+  group by
+    roster.case_id
+    )
+group by
+  edited_age >= 20 and edited_age <30,
+  edited_age >= 30 and edited_age <40,
+  edited_age >= 40 and edited_age <50,
+  sex;

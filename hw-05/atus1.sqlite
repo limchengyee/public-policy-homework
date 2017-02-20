@@ -1,0 +1,21 @@
+SELECT sex, agerange, AVG(time) FROM
+(
+  SELECT
+    activities.case_id,
+    SUM((activity_code=120307)*duration) time,
+    AVG(edited_sex) sex,
+    (edited_age/10) agerange
+  FROM activities
+  JOIN roster ON
+    activities.case_id = roster.case_id AND
+    roster.line_no = 1
+  GROUP BY activities.case_id
+)
+
+WHERE
+  agerange >= 2 AND
+  agerange <= 4 AND
+  time > 0
+GROUP BY
+  sex, agerange
+;

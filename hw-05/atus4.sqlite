@@ -1,0 +1,10 @@
+select
+  educational_attainment, avg(spouse_or_partner_present<=2)
+from
+  respondents,
+  cps
+where
+  respondents.case_id = cps.case_id AND
+  educational_attainment > 0
+group by
+  educational_attainment;

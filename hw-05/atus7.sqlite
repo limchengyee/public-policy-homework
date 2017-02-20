@@ -1,0 +1,10 @@
+select
+  edited_sex, COUNT(edited_sex), avg(daily_time_secondary_childcare_hh_or_own_children + daily_time_secondary_childcare_hh_children) as children
+from
+  respondents,
+  roster
+where
+  respondents.case_id = roster.case_id AND
+  roster.line_no = 1
+group by
+  edited_sex;

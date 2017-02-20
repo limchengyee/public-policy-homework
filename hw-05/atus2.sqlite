@@ -1,0 +1,10 @@
+select
+  spouse_or_partner_present,
+  avg(worked_last_week==1)
+from
+  respondents
+where
+  worked_last_week <=2
+group by
+  spouse_or_partner_present<=2,
+  spouse_or_partner_present =3;

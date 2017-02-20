@@ -1,0 +1,8 @@
+select
+  avg(marital_status==1)
+from
+  respondents, cps
+where
+  respondents.case_id = cps.case_id AND
+  dow_of_diary_day IN (1,6,7) AND
+  number_of_hh_children > 0;

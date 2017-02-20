@@ -1,0 +1,8 @@
+select
+  department, sum(salary)
+from
+  chicago
+where
+  department LIKE 'Mayor%'
+group by 
+  department;

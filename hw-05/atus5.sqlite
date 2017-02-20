@@ -1,0 +1,17 @@
+select
+  educational_attainment, edited_sex, avg((activity_code/100=201)*duration)
+from
+  roster
+  join
+    activities
+on
+    roster.case_id = activities.case_id
+  join
+    cps
+  on
+    roster.case_id = cps.case_id
+where
+  educational_attainment > 0
+group by
+  educational_attainment,
+  edited_sex;

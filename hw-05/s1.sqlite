@@ -1,0 +1,10 @@
+select
+  position,
+  avg(Salary) as Average
+from
+  chicago
+where
+  position like 'firefighter'
+group by
+  position
+;
